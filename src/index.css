@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+
+  --color-cream: #FDF6EE;
+  --color-warm-sand: #F5E6D3;
+  --color-blush: #F0C9A8;
+  --color-terracotta: #C97B4B;
+  --color-deep-rust: #8B4A2A;
+  --color-sage: #8BA888;
+  --color-sage-light: #C8DBC6;
+  --color-lavender: #C4B5D4;
+  --color-night-blue: #2A3550;
+  --color-moon: #F9F3E8;
+  --color-text-main: #3D2B1A;
+  --color-text-soft: #8A6A52;
+  --color-text-muted: #B89880;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ambient background */
+.bg-ambient {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 10%, rgba(240,201,168,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 80%, rgba(196,181,212,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(253,246,238,1) 0%, rgba(245,230,211,0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Stars */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-terracotta);
+  opacity: 0;
+  animation: twinkle var(--d, 4s) ease-in-out infinite var(--delay, 0s);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: var(--op, 0.25); transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wavePulse {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: var(--op, 0.5); }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(192,57,43,0.4); }
+  50% { box-shadow: 0 4px 40px rgba(192,57,43,0.7); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+
+.animate-wave {
+  animation: wavePulse var(--wd, 1.2s) ease-in-out infinite var(--wdelay, 0s);
+}
+
+.animate-ring-pulse {
+  animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+.animate-record-pulse {
+  animation: recordPulse 1s ease-in-out infinite;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
